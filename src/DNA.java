@@ -6,17 +6,32 @@
  * at Menlo School in Atherton, CA
  *</p>
  * <p>
- * Completed by: [YOUR NAME HERE]
+ * Completed by: Oliver Faris
  *</p>
  */
 
 public class DNA {
-
-    /**
-     * TODO: Complete this function, STRCount(), to return longest consecutive run of STR in sequence.
-     */
     public static int STRCount(String sequence, String STR) {
+        int index = 0;
+        int longestSTR = 0;
+        int currentSTR = 0;
+        int sequenceLength = sequence.length();
 
-        return 0;
+        // Repeat until there is still an STR in sequence
+        while (index != -1) {
+            index = sequence.indexOf(STR);
+            // Str repeats if index is 0
+            if (index == 0 && sequence.length() != sequenceLength) {
+                currentSTR += 1;
+                if (currentSTR > longestSTR)
+                    longestSTR = currentSTR;
+            }
+
+            else
+                currentSTR = 0;
+            // Shorten sequence
+            sequence = sequence.substring(index + STR.length());
+        }
+        return longestSTR + 1;
     }
 }
